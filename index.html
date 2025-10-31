@@ -3,217 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carolina de Roma - Desenvolvedora</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Carolina de Roma - Desenvolvedora Web</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
         * {
-            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        :root {
+            --rose-50: #fff1f2;
+            --rose-100: #ffe4e6;
+            --rose-200: #fecdd3;
+            --rose-300: #fda4af;
+            --rose-400: #fb7185;
+            --rose-500: #f43f5e;
+            --rose-600: #e11d48;
+            --rose-700: #be123c;
+            --rose-800: #9f1239;
+            --rose-900: #881337;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
         body {
-            background: linear-gradient(135deg, #ffeef8 0%, #fff5f9 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: linear-gradient(135deg, var(--rose-50) 0%, #ffffff 50%, var(--rose-50) 100%);
+            min-height: 100vh;
         }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        
-        .card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        header {
+            background: linear-gradient(135deg, var(--rose-500) 0%, var(--rose-600) 100%);
+            color: white;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.2);
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
         }
-        
-        .tech-badge {
-            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
-            color: #be185d;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 500;
-            font-size: 14px;
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .badge {
             display: inline-block;
-            margin: 6px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
         }
-        
-        .tech-badge:hover {
-            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
-            color: white;
-            transform: scale(1.05);
+
+        .badge:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
         }
-        
-        .language-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: #fdf2f8;
-            border-radius: 12px;
-            margin-bottom: 10px;
+
+        section {
+            padding: 80px 0;
         }
-        
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            color: white;
-            font-weight: 600;
-            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.3);
-        }
-        
-        .section-title {
-            font-size: 32px;
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--rose-600);
+            margin-bottom: 16px;
             font-weight: 700;
-            color: #be185d;
-            margin-bottom: 30px;
             position: relative;
             display: inline-block;
         }
-        
-        .section-title::after {
+
+        h2::after {
             content: '';
             position: absolute;
             bottom: -8px;
             left: 0;
             width: 60px;
             height: 4px;
-            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            background: linear-gradient(90deg, var(--rose-400), var(--rose-600));
             border-radius: 2px;
         }
-        
+
+        .section-subtitle {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        .bio-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(244, 63, 94, 0.08);
+            border: 1px solid var(--rose-100);
+        }
+
+        .languages {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .language-tag {
+            background: linear-gradient(135deg, var(--rose-50), var(--rose-100));
+            color: var(--rose-700);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--rose-200);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .language-tag:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.2);
+            border-color: var(--rose-400);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid var(--rose-100);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rose-400), var(--rose-600));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .tech-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(244, 63, 94, 0.15);
+            border-color: var(--rose-300);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .tech-card:hover .tech-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .tech-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .tech-description {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            opacity: 0.8;
+        }
+
+        .education-card {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(244, 63, 94, 0.08);
+            border: 2px solid var(--rose-100);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            box-shadow: 0 20px 60px rgba(244, 63, 94, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .education-title {
+            font-size: 1.75rem;
+            color: var(--rose-600);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .education-institution {
+            font-size: 1.3rem;
+            color: var(--gray-800);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .education-description {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--gray-900), var(--gray-800));
+            color: white;
+            text-align: center;
+            padding: 40px 24px;
+            margin-top: 80px;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
         @media (max-width: 768px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 32px;
+            }
+
             .profile-image {
                 width: 150px;
                 height: 150px;
-                font-size: 60px;
             }
-            
-            .section-title {
-                font-size: 24px;
+
+            section {
+                padding: 60px 0;
+            }
+
+            .bio-text {
+                padding: 32px 24px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 16px;
+            }
+
+            .education-card {
+                padding: 32px 24px;
             }
         }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section > * {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        section > *:nth-child(1) { animation-delay: 0.1s; }
+        section > *:nth-child(2) { animation-delay: 0.2s; }
+        section > *:nth-child(3) { animation-delay: 0.3s; }
     </style>
 </head>
-<body class="min-h-screen">
-    <header class="py-6 px-4 md:px-8 bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-        <nav class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold gradient-text">Carolina de Roma</div>
-            <div class="hidden md:flex gap-8">
-                <a href="#sobre" class="text-pink-700 hover:text-pink-500 transition-colors font-medium">Sobre</a>
-                <a href="#tecnologias" class="text-pink-700 hover:text-pink-500 transition-colors font-medium">Tecnologias</a>
-                <a href="#contato" class="text-pink-700 hover:text-pink-500 transition-colors font-medium">Contato</a>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="eu.png" alt="Carolina de Roma" class="profile-image">
+                <div class="header-text">
+                    <h1>Carolina de Roma</h1>
+                    <p class="subtitle">Desenvolvedora Web</p>
+                    <span class="badge">✨ Disponível para Estágio</span>
+                </div>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 md:px-8 py-12">
-        <section class="text-center mb-20">
-            <div class="flex justify-center mb-8">
-                <div class="profile-image">CR</div>
+    <section>
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <p class="section-subtitle">Conheça um pouco da minha trajetória</p>
+            <div class="bio-text">
+                <p>Olá! Sou Carolina de Roma, estudante de Análise e Desenvolvimento de Sistemas na UNIFOR e apaixonada por tecnologia. Estou em busca de uma oportunidade de estágio para aplicar meus conhecimentos em desenvolvimento web e continuar crescendo profissionalmente. Tenho experiência com diversas tecnologias e estou sempre em busca de novos desafios.</p>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 gradient-text">Carolina de Roma</h1>
-            <p class="text-xl md:text-2xl text-pink-700 mb-6">Desenvolvedora & Estudante de ADS</p>
-            <p class="text-gray-600 max-w-2xl mx-auto text-lg">UNIFOR - Universidade de Fortaleza</p>
-        </section>
+            <div class="languages">
+                <span class="language-tag">🇧🇷 Português</span>
+                <span class="language-tag">🇺🇸 Inglês</span>
+                <span class="language-tag">🇷🇺 Russo</span>
+            </div>
+        </div>
+    </section>
 
-        <section id="sobre" class="mb-20">
-            <div class="card p-8 md:p-12">
-                <h2 class="section-title">Sobre Mim</h2>
-                <p class="text-gray-700 leading-relaxed text-lg mb-6">
-                    Olá! Sou Carolina de Roma, estudante de Análise e Desenvolvimento de Sistemas na UNIFOR. 
-                    Apaixonada por tecnologia e desenvolvimento web, estou constantemente aprendendo e evoluindo 
-                    minhas habilidades para criar soluções digitais inovadoras e funcionais.
-                </p>
-                <p class="text-gray-700 leading-relaxed text-lg mb-8">
-                    Minha jornada na programação começou com a curiosidade de entender como as coisas funcionam 
-                    por trás das telas. Hoje, trabalho com diversas tecnologias e ferramentas para transformar 
-                    ideias em realidade através do código.
-                </p>
-                
-                <h3 class="text-2xl font-semibold text-pink-700 mb-4">Idiomas</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div class="language-item">
-                        <span class="text-3xl">🇧🇷</span>
-                        <div>
-                            <div class="font-semibold text-pink-700">Português</div>
-                            <div class="text-sm text-gray-600">Nativo</div>
-                        </div>
-                    </div>
-                    <div class="language-item">
-                        <span class="text-3xl">🇺🇸</span>
-                        <div>
-                            <div class="font-semibold text-pink-700">Inglês</div>
-                            <div class="text-sm text-gray-600">Fluente</div>
-                        </div>
-                    </div>
-                    <div class="language-item">
-                        <span class="text-3xl">🇷🇺</span>
-                        <div>
-                            <div class="font-semibold text-pink-700">Russo</div>
-                            <div class="text-sm text-gray-600">Fluente</div>
-                        </div>
-                    </div>
+    <section style="background: linear-gradient(180deg, transparent, var(--rose-50), transparent);">
+        <div class="container">
+            <h2>Tecnologias</h2>
+            <p class="section-subtitle">Ferramentas e linguagens que domino</p>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <span class="tech-icon">📄</span>
+                    <h3 class="tech-name">HTML</h3>
+                    <p class="tech-description">Estruturação semântica</p>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🎨</span>
+                    <h3 class="tech-name">CSS</h3>
+                    <p class="tech-description">Estilização moderna</p>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">⚡</span>
+                    <h3 class="tech-name">JavaScript</h3>
+                    <p class="tech-description">Interatividade dinâmica</p>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🗄️</span>
+                    <h3 class="tech-name">MySQL</h3>
+                    <p class="tech-description">Banco de dados</p>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">💻</span>
+                    <h3 class="tech-name">VS Code</h3>
+                    <p class="tech-description">Ambiente de desenvolvimento</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="tecnologias" class="mb-20">
-            <div class="card p-8 md:p-12">
-                <h2 class="section-title">Tecnologias & Ferramentas</h2>
-                <p class="text-gray-700 mb-8 text-lg">
-                    Trabalho com diversas tecnologias modernas para desenvolvimento web e gerenciamento de dados:
-                </p>
-                <div class="flex flex-wrap justify-center">
-                    <span class="tech-badge">HTML</span>
-                    <span class="tech-badge">CSS</span>
-                    <span class="tech-badge">JavaScript</span>
-                    <span class="tech-badge">MySQL</span>
-                    <span class="tech-badge">Visual Studio Code</span>
-                </div>
+    <section>
+        <div class="container">
+            <h2>Formação</h2>
+            <p class="section-subtitle">Minha jornada acadêmica</p>
+            <div class="education-card">
+                <h3 class="education-title">Análise e Desenvolvimento de Sistemas</h3>
+                <p class="education-institution">UNIFOR - Universidade de Fortaleza</p>
+                <p class="education-description">Curso superior focado em desenvolvimento de software, análise de sistemas, banco de dados e gestão de projetos tecnológicos. Aprendizado prático e teórico para formar profissionais completos na área de tecnologia da informação.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contato" class="mb-20">
-            <div class="card p-8 md:p-12 text-center">
-                <h2 class="section-title">Vamos Conversar?</h2>
-                <p class="text-gray-700 mb-8 text-lg max-w-2xl mx-auto">
-                    Estou sempre aberta a novas oportunidades, projetos interessantes e conexões profissionais. 
-                    Entre em contato comigo!
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="mailto:carolina@email.com" class="px-8 py-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
-                        Email
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="px-8 py-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com" target="_blank" class="px-8 py-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
-                        GitHub
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-white/80 backdrop-blur-sm py-8 px-4 text-center">
-        <p class="text-gray-600">© 2025 Carolina de Roma. Todos os direitos reservados.</p>
-        <p class="text-pink-600 font-medium mt-2">Feito com 💖 e código</p>
+    <footer>
+        <div class="container">
+            <p>© 2025 Carolina de Roma. Todos os direitos reservados.</p>
+        </div>
     </footer>
 </body>
 </html>
